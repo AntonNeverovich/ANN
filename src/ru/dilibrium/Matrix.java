@@ -2,14 +2,13 @@ package ru.dilibrium;
 
 class Matrix {
 
-
     /**
-     * метод возвращает матрицу в результате суммирования двух других матриц
-     * @param matrix
-     * @param matrix1
-     * @return
+     * метод возвращает первую матрицу в результате суммирования с другой
+     * @param matrix матрица 1
+     * @param matrix1 матрица 2
+     * @return результирующая матрица
      */
-    public static double[][] summationMatrix (double[][] matrix, double[][] matrix1) {
+    static double[][] summationMatrix (double[][] matrix, double[][] matrix1) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = matrix[i][j] + matrix1[i][j];
@@ -18,12 +17,12 @@ class Matrix {
         return matrix;
     }
 
-
     /**
      * метод реализующий умножение матрицы на скаляр (число)
      * @param s значение скалярного вектора
+     * @return возвращает результирующую мтарицу
      */
-    public static double[][] multiplicationSkalar(double[][] matrix, double s) {
+    static double[][] multiplicationSkalar(double[][] matrix, double s) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = matrix[i][j] * s;
@@ -35,22 +34,19 @@ class Matrix {
     /**
      * метод заполняет матрицу случайными числами
      * @param matrix изначальная матрица
-     * @return
      */
-    public static double[][] randomMatrix(double[][] matrix) {
+    static void randomMatrix(double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = Math.random();
             }
         }
-        return matrix;
     }
 
     /**
      * метод выводит значение матрицы Matrix в консоль
      */
-    public static void consoleDisplay(double[][] matrix) {
-        System.out.println("Матрица \n");
+    static void consoleDisplay(double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.printf("%.2f", matrix[i][j]);
@@ -60,5 +56,4 @@ class Matrix {
         }
         System.out.println();
     }
-
 }
