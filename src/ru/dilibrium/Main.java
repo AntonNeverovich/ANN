@@ -4,23 +4,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // размерность матрицы
-        int n = 3,
-            m = 3;
+        int m = 3,
+            n = 3;
 
-        Matrix wages = new Matrix(new double[n][m]);
-        wages.randomMatrixDouble();
+        double[][] matrix = new double[m][n];
+        Matrix.randomMatrix(matrix);
+        Matrix.consoleDisplay(matrix);
 
-        // индексы элемента
-        int a = 0,
-            b = 0;
+        double[][] matrix1 = new double[m][n];
+        Matrix.randomMatrix(matrix1);
+        Matrix.consoleDisplay(matrix1);
 
-        for (int i = 0; i <10; i++) {
-            System.out.println("Итерация: " + i);
-            if (wages.getValue(a, b) > 0.005) {
-                wages.multiplicationSkalar(ActivationFunction.logistic(wages.getValue(a, b)));
-            }
-        }
+        Matrix.consoleDisplay(Matrix.multiplicationSkalar(matrix1, ActivationFunction.logistic(Math.random())));
+        Matrix.consoleDisplay(Matrix.summationMatrix(matrix, matrix1));
+
+
+
 
     }
 }
