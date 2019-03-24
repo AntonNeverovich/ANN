@@ -7,8 +7,8 @@ class ActivationFunction {
      * @param x x
      * @return f(x)
      */
-    static double logistic(double x) {
-        x = 1 / (1 + (Math.pow(Math.E, x)));
+    static float logistic(float x) {
+        x = (float)(1 / (1 + (Math.pow(Math.E, x))));
         return x;
     }
 

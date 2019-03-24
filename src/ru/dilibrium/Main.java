@@ -1,30 +1,34 @@
 package ru.dilibrium;
 
+import ru.dilibrium.matrix.Matrix;
+import ru.dilibrium.matrix.MatrixFactory;
+import ru.dilibrium.matrix.MatrixMath;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        int m = 3,
-            n = 3;
+        float[][] ma = {{3f, 4f}, {4f, 3f}};
+        float[][] mb = {{5f, 6f}, {6f, 5f}};
+        Matrix a = new Matrix(ma); // MatrixFactory.random(new Matrix(5, 2));
+        Matrix b = new Matrix(mb); //MatrixFactory.random(new Matrix(2, 3));
+        Matrix c = new Matrix();
 
-        System.out.println("Инициализация первой матрицы");
-        double[][] matrix = new double[m][n];
-        Matrix.randomMatrix(matrix);
-        Matrix.consoleDisplay(matrix);
+        try {
+            if (a.getColumnCount() == b.getRowCount()) {
+                c = MatrixMath.multiplication(a, b);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Умножение матриц невозможно");
+        }
 
-        System.out.println("Инициализация второй матрицы");
-        double[][] matrix1 = new double[m][n];
-        Matrix.randomMatrix(matrix1);
-        Matrix.consoleDisplay(matrix1);
+        MatrixFactory.toConsole(a);
+        MatrixFactory.toConsole(b);
+        MatrixFactory.toConsole(c);
 
-        double s = ActivationFunction.logistic(Math.random());
-        System.out.print("Умножение второй матрицы на случайное число ");
-        System.out.printf("%.2f", s);
-        System.out.println();
-        Matrix.consoleDisplay(Matrix.multiplicationSkalar(matrix1, s));
 
-        System.out.println("Прибавление второй матрицы к первой");
-        Matrix.consoleDisplay(Matrix.summationMatrix(matrix, matrix1));
+
 
     }
 }
